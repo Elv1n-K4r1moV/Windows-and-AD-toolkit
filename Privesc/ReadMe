@@ -1,8 +1,6 @@
 Use Case 1 (Pentest): Run Basic Checks Only
 🎯 Objective: I want to know if there is any obvious way I can escalate my privileges.
-```
-powershell -ep bypass -c ". .\PrivescCheck.ps1; Invoke-PrivescCheck"
-```
+```powershell -ep bypass -c ". .\PrivescCheck.ps1; Invoke-PrivescCheck"```
 Use Case 2 (Research): Run Extended Checks + Write Human-Readable Reports
 🎯 Objective: There is no obvious vulnerability, but I want to dig a little further (and potentially find an 0-day in some third-party software for instance).
 powershell -ep bypass -c ". .\PrivescCheck.ps1; Invoke-PrivescCheck -Extended -Report PrivescCheck_$($env:COMPUTERNAME) -Format TXT,HTML"
