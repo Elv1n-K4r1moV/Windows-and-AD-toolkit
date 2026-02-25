@@ -13,3 +13,7 @@ hash də birbaşa göndərilmir,
 server sadəcə istifadəçinin hash‑ə sahib olduğunu yoxlayır.
 
 <img width="1360" height="445" alt="image" src="https://github.com/user-attachments/assets/46bd4447-5025-4c4d-884f-aaaa2adb3fa5" />
+
+Movcud ola bilecek hucumlar:
+
+<img width="171" height="208" alt="image" src="https://github.com/user-attachments/assets/0b190822-67b9-469a-ba80-9aaf6d600c78" />
