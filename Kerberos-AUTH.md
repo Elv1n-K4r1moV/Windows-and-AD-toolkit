@@ -129,3 +129,39 @@ KDC Client‑dən gələn AS-REQ paketini alır. İçindəki Encrypted Timestamp
 KDC AD-də NTDS.DIT faylında saxlanan istifadəçi *NT hash‑i (UserKey)* ilə göndərilən timestamp‑ı decrypt edir, əgər decrypt uğurlu olarsa və timestamp ilə KDC‑nin cari vaxtı arasındakı fərq icazə verilən limitdədirsə (məsələn ±5 dəqiqə), istifadəçi uğurla doğrulanır. Her sey qaydasindadirsa artiq TGT yaradilir.
 
 Burda eger biz domen admin olsaq ve server terefdeki lsass-in konfiqurasiyasini deyisib ora master_passworda gore de yoxla desek. O halda bizim as-req-in yoxlanmasi zamani encrypted timestamp artiq ntds.dit-deki hashle yox bizim sonradan valid kimi verdiyimiz master_password-la yoxlanilir.
+
+## AS-REP ROASTING ATTACK
+
+AS‑REP ROASTING ATTACK
+
+Yuxarıda gördük ki normal Kerberos prosesində:
+
+*Client AS‑REQ göndərərkən Pre‑Authentication istifadə edir.*
+*Yəni timestamp UserKey (NT hash) ilə encrypt olunur.*
+*KDC istifadəçinin həqiqətən password bildiyini sübut edir.*
+
+Amma Active Directory‑də bəzi hesablar üçün Pre‑Authentication disable edilə bilər.
+
+Bu atribut:
+
+Do not require Kerberos preauthentication
+
+aktiv olduqda fərqli vəziyyət yaranır.
+
+Normal Flow
+
+Client → AS‑REQ (Encrypted Timestamp)
+KDC → yoxlayır → AS‑REP göndərir
+
+Pre‑Auth Disabled olduqda
+
+Client artıq:
+
+*Timestamp göndərmir*
+*Password sübut etmir*
+
+Sadəcə:
+
+AS-REQ (username) göndərmək kifayətdir.
+
+KDC düşünür: Bu istifadəçi üçün pre‑authentication tələb olunmur və birbaşa AS‑REP cavabı yaradır.
