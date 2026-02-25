@@ -6,11 +6,7 @@ LSASS cari vaxtdan bir **timestamp** yaradır.
 
 Timestamp Yaradilmasi:
 
-*OS‑dən cari vaxtı oxuyur*
-
-*UTC formatına çevirir*
-
-*Kerberos formatında saxlayır*
+*OS‑dən cari vaxtı oxuyur*  --> *UTC formatına çevirir*   --> *Kerberos formatında saxlayır*
 
 Misal: 20260225051432Z
 
@@ -18,9 +14,7 @@ Daha sonra bu **Timestamp** *UserKey* ( userin pass yazanda lsass-in yaratdigi n
 
 Timestamp-dam istifadenin meqsedi REPLAY hucumlarinin qarsisini almaqdir.
 
-Əgər timestamp olmasa:
-
-attacker köhnə login paketini tutub sonra yenidən göndərə bilər.
+Əgər timestamp olmasa: attacker köhnə login paketini tutub sonra yenidən göndərə bilər.
 
 Amma KDC yoxlayır: timestamp ≈ current time ?
 
@@ -42,13 +36,7 @@ TGT yaradılarkən lazım olan iki əsas komponent:
 
 **1.** TGT Data – içində saxlanır:
 
-Username / SID
-
-Domain adı
-
-Ticket validity (expiration)
-
-Session Key (client ↔ TGS üçün)
+Username / SID , Domain adı , Ticket validity (expiration) , Session Key (client ↔ TGS üçün)
 
 Bəzən client IP
 
