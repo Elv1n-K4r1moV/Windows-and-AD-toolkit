@@ -68,7 +68,7 @@ Daha sonra AS-REP response hazirlanir ve **AS‑REP paketində iki ayrı şey cl
 
 ## GOLDEN TICKET ATTACK-DA
 
-Biz saxta TGT (Ticket Granting Ticket) yaradırıq. Bunu yaratmaq üçün ən vacib məlumat krbtgt hesabının NT hash‑idir. Əgər attacker krbtgt hash‑i əldə edərsə, artıq: TGT Data (username, domain, SID, groups və s.) tapa ve istifade edib saxta TGT hazirlaya biler. Normalda dedikki as-rep-de tgt ve session key gonderilir ama golden ticketde kdc falan yaratmir biz ozumuz tgt yaradiriq deye TGT-nin icindeki ve TGT ile beraber gonderdiyimiz session key-i random secirik. Meselen,
+Biz saxta TGT (Ticket Granting Ticket) yaradırıq. Bunu yaratmaq üçün ən vacib məlumat krbtgt hesabının NT hash‑idir. Əgər attacker krbtgt hash‑i əldə edərsə, artıq: TGT Data (username, domain, SID, groups və s.) tapa ve istifade edib saxta TGT hazirlaya biler. Normalda dedikki as-rep-de tgt ve EncASRepPart gonderilir ama golden ticketde kdc falan yaratmir biz ozumuz tgt yaradiriq deye TGT-nin icindeki ve TGT ile beraber gonderdiyimiz session key-i random secirik. Meselen,
 
 Golden Ticket zamanı Mimikatz istifadə edilirsə, Session Key ayrıca parametr kimi yazılmır.
 
