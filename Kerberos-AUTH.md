@@ -72,21 +72,9 @@ Daha sonra AS-REP response hazirlanir ve **AS‑REP paketində iki ayrı şey cl
 
 Bes **Session Key** nedir?
 
-KDC düşünür:
+KDC düşünür: Mən clientə TGT verdim. Amma sabah TGS‑REQ gələndə haradan bilim bunu göndərən doğrudan həmin userdir? Çünki: TGT sadəcə bir fayldır ve networkdə tutulub kopyalana bilər.
 
-Mən clientə TGT verdim.
-
-Amma sabah TGS‑REQ gələndə haradan bilim bunu göndərən doğrudan həmin userdir?
-
-Çünki:
-
-TGT sadəcə bir fayldır ve networkdə tutulub kopyalana bilər.
-
-Deməli KDC‑yə lazımdır:
-
-TGT sahibi olduğunu sübut edən gizli şey. Bu gizli şey = Session Key
-
-Session key (UserKey ilə encrypted) → Client üçün
+Deməli KDC‑yə lazımdır: TGT sahibi olduğunu sübut edən gizli şey. Bu gizli şey = Session Key
 
 Amma TGT icinde de session key var:
 
