@@ -1,4 +1,4 @@
-İstifadəçi username və password yazır. Client kompüter password‑u serverə göndərmir. Əvvəlcə password lokal olaraq NT hash‑ə çevrilir. Sonra client serverə login istəyi göndərir. Server istifadəçinin kimliyini yoxlamaq üçün 16 baytlıq random challenge göndərir.
+İstifadəçi username və password yazır. Client kompüter password‑u serverə göndərmir. Əvvəlcə password lokal olaraq NT hash‑ə çevrilir (lsass edir bunu). Sonra client serverə login istəyi göndərir. Server istifadəçinin kimliyini yoxlamaq üçün 16 baytlıq random challenge göndərir.
 
 Client artıq hesablanmış NT hash‑i götürür və həmin challenge ilə birlikdə yeni bir dəyər — NTLM response yaradır. Bu response və username serverə göndərilir.
 
