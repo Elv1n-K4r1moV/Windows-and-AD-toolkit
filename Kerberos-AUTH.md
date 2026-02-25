@@ -146,7 +146,7 @@ Normalda biz NT hash ile timestampi hashleyir as-req-de gonderirik ki, bize tgt 
 
 Yeni burada eslinde bize EncASRepPart bunun datasi lazim deyil meqsedimiz nt hashdir ne vaxt EncASRepPart bunu desifre ede bilsek bilirikki artiq nt hashi elde etdik.
 
-<img width="889" height="860" alt="image" src="https://github.com/user-attachments/assets/f527a9c0-a04d-4fd0-b5b5-9f286245610d" />
+<img width="689" height="660" alt="image" src="https://github.com/user-attachments/assets/f527a9c0-a04d-4fd0-b5b5-9f286245610d" />
 
 Eslinde hashcat NT hash‑i qırmır. Sadəcə password‑un doğru olub‑olmadığını yoxlayır.
 
