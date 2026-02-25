@@ -117,3 +117,15 @@ Ticket strukturu
 Encryption field-ləri
 
 Mimikatz özü hazırlayır.
+
+## SKELETON KEY ATTACK
+
+Yadimiza salaq:
+
+KDC istifadəçini doğrulayır:
+
+KDC Client‑dən gələn AS-REQ paketini alır. İçindəki Encrypted Timestamp‑ı UserKey ilə decrypt edir. 
+
+KDC AD-də NTDS.DIT faylında saxlanan istifadəçi *NT hash‑i (UserKey)* ilə göndərilən timestamp‑ı decrypt edir, əgər decrypt uğurlu olarsa və timestamp ilə KDC‑nin cari vaxtı arasındakı fərq icazə verilən limitdədirsə (məsələn ±5 dəqiqə), istifadəçi uğurla doğrulanır. Her sey qaydasindadirsa artiq TGT yaradilir.
+
+Burda eger biz domen admin olsaq ve server terefdeki lsass-in konfiqurasiyasini deyisib ora master_passworda gore de yoxla desek. O halda bizim as-req-in yoxlanmasi zamani encrypted timestamp artiq ntds.dit-deki hashle yox bizim sonradan valid kimi verdiyimiz master_password-la yoxlanilir.
