@@ -6,11 +6,11 @@ LSASS cari vaxtdan bir **timestamp** yaradır.
 
 Timestamp Yaradilmasi:
 
-✔ OS‑dən cari vaxtı oxuyur
+*OS‑dən cari vaxtı oxuyur*
 
-✔ UTC formatına çevirir
+*UTC formatına çevirir*
 
-✔ Kerberos formatında saxlayır
+*Kerberos formatında saxlayır*
 
 Misal: 20260225051432Z
 
@@ -40,7 +40,7 @@ KDC AD-də NTDS.DIT faylında saxlanan istifadəçi *NT hash‑i (UserKey)* ilə
 
 TGT yaradılarkən lazım olan iki əsas komponent:
 
-1️⃣ TGT Data – içində saxlanır:
+**1** TGT Data – içində saxlanır:
 
 Username / SID
 
@@ -52,7 +52,7 @@ Session Key (client ↔ TGS üçün)
 
 Bəzən client IP
 
-2️⃣ krbtgt hesabının NT hash‑i (gizli açar) – TGT‑ni encrypt etmək üçün istifadə olunur.
+**2** krbtgt hesabının NT hash‑i (gizli açar) – TGT‑ni encrypt etmək üçün istifadə olunur.
 
 Yəni sadə şəkildə:
 
@@ -60,11 +60,11 @@ TGT = Encrypt(TGT Data, krbtgt NT hash)
 
 Bu o deməkdir:
 
-✔ Client TGT‑ni oxuya bilmir
+*Client TGT‑ni oxuya bilmir*
 
-✔ yalnız KDC oxuya bilir
+*yalnız KDC oxuya bilir*
 
-✔ Client sadəcə TGT‑ni saxlayır və ötürür
+*Client sadəcə TGT‑ni saxlayır və ötürür*
 
 Daha sonra AS-REP response hazirlanir ve **AS‑REP paketində iki ayrı şey cliente gonderilir**:
 
