@@ -111,3 +111,17 @@ password guess
 → açıldı? = password doğrudur
 
 Qısa nəticə: Hash qırılmır, NT hash çıxarılmır, Sadəcə password düzgünmü yoxlanılır
+
+# TGS_REQ
+
+TGS_REQ
+
+İlk növbədə client yeni bir timestamp yaradır. Bu timestamp göstərir ki, sorğu yeni və təzədir, köhnə paketləri təkrar istifadə etməyə imkan vermir.
+
+Daha sonra client bu timestamp-i AS-REP-də gələn Client ↔ TGS session key ilə şifrələyir (EncASRepPart içində olan session key-dən çıxarılır). Bu şifrələnmiş məlumat artıq Authenticator adlanır.
+
+Client TGS-ə sorğu göndərərkən iki əsas komponenti birlikdə ötür:
+
+TGT – KDC tərəfindən əvvəl verilmiş, client tərəfindən oxuna bilməyən ticket
+
+Authenticator – içində timestamp və username var, session key ilə şifrələnmişdir
