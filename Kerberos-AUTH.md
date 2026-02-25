@@ -70,7 +70,7 @@ Daha sonra AS-REP response hazirlanir ve **AS‑REP paketində iki ayrı şey cl
 
 1. **TGT**   2. **Session Key**
 
-Bes Session Key nedir?
+Bes **Session Key** nedir?
 
 KDC düşünür:
 
