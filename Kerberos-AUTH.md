@@ -168,8 +168,8 @@ password guess
 
 Qısa nəticə:
 
-❌ Hash qırılmır
+Hash qırılmır
 
-❌ NT hash çıxarılmır
+NT hash çıxarılmır
 
-✅ Sadəcə password düzgünmü yoxlanılır
+Sadəcə password düzgünmü yoxlanılır
