@@ -91,3 +91,29 @@ Client üçün: Session Key = Encrypt(SessionKey, UserKey)
 TGT içindəki :Session Key = Encrypt(SessionKey, krbtgt key)
 
 <img width="693" height="270" alt="image" src="https://github.com/user-attachments/assets/bf8b8465-8b03-43ff-bf11-c8552b766e19" />
+
+## GOLDEN TICKET ATTACK-DA
+
+Biz saxta TGT (Ticket Granting Ticket) yaradırıq. Bunu yaratmaq üçün ən vacib məlumat krbtgt hesabının NT hash‑idir. Əgər attacker krbtgt hash‑i əldə edərsə, artıq: TGT Data (username, domain, SID, groups və s.) tapa ve istifade edib saxta TGT hazirlaya biler. Normalda dedikki as-rep-de tgt ve session key gonderilir ama golden ticketde kdc falan yaratmir biz ozumuz tgt yaradiriq deye TGT-nin icindeki ve TGT ile beraber gonderdiyimiz session key-i random secirik. Meselen,
+
+Golden Ticket zamanı Mimikatz istifadə edilirsə, Session Key ayrıca parametr kimi yazılmır.
+
+Çünki: Mimikatz TGT yaradarkən Session Key-i avtomatik olaraq özü random şəkildə generasiya edir.
+
+Yəni attacker yalnız bunları verir:
+
+username
+
+domain name
+
+domain SID
+
+krbtgt hash
+
+Qalan hissələri:
+
+Session Key
+Ticket strukturu
+Encryption field-ləri
+
+Mimikatz özü hazırlayır.
