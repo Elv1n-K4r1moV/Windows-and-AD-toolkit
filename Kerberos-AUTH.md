@@ -145,3 +145,31 @@ Normalda biz NT hash ile timestampi hashleyir as-req-de gonderirik ki, bize tgt 
 <img width="340" height="305" alt="image" src="https://github.com/user-attachments/assets/fa12823b-debe-485b-84ed-42a78f3ed234" />
 
 Yeni burada eslinde bize EncASRepPart bunun datasi lazim deyil meqsedimiz nt hashdir ne vaxt EncASRepPart bunu desifre ede bilsek bilirikki artiq nt hashi elde etdik.
+
+<img width="889" height="860" alt="image" src="https://github.com/user-attachments/assets/f527a9c0-a04d-4fd0-b5b5-9f286245610d" />
+
+Eslinde hashcat NT hash‑i qırmır. Sadəcə password‑un doğru olub‑olmadığını yoxlayır.
+
+AS‑REP roasting nəticəsində əldə etdiyimiz sekilde beledir:
+
+$krb5asrep$23$user@domain....
+
+Bu NT hash deyil. Bu → NT hash ilə şifrələnmiş EncASRepPart‑dır.
+
+Hashcat necə işləyir:
+
+password guess
+
+→ NT hash hesabla
+
+→ EncASRepPart‑i decrypt etməyə çalış
+
+→ açıldı? = password doğrudur
+
+Qısa nəticə:
+
+❌ Hash qırılmır
+
+❌ NT hash çıxarılmır
+
+✅ Sadəcə password düzgünmü yoxlanılır
