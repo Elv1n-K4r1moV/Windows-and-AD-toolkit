@@ -132,36 +132,4 @@ Burda eger biz domen admin olsaq ve server terefdeki lsass-in konfiqurasiyasini 
 
 ## AS-REP ROASTING ATTACK
 
-AS‑REP ROASTING ATTACK
-
-Yuxarıda gördük ki normal Kerberos prosesində:
-
-*Client AS‑REQ göndərərkən Pre‑Authentication istifadə edir.*
-*Yəni timestamp UserKey (NT hash) ilə encrypt olunur.*
-*KDC istifadəçinin həqiqətən password bildiyini sübut edir.*
-
-Amma Active Directory‑də bəzi hesablar üçün Pre‑Authentication disable edilə bilər.
-
-Bu atribut:
-
-Do not require Kerberos preauthentication
-
-aktiv olduqda fərqli vəziyyət yaranır.
-
-Normal Flow
-
-Client → AS‑REQ (Encrypted Timestamp)
-KDC → yoxlayır → AS‑REP göndərir
-
-Pre‑Auth Disabled olduqda
-
-Client artıq:
-
-*Timestamp göndərmir*
-*Password sübut etmir*
-
-Sadəcə:
-
-AS-REQ (username) göndərmək kifayətdir.
-
-KDC düşünür: Bu istifadəçi üçün pre‑authentication tələb olunmur və birbaşa AS‑REP cavabı yaradır.
+Normalda biz NT hash ile timestampi hashleyir as-req-de gonderirik ki, bize tgt versin ama eger kerberos Pre‑Authentication disable-dirsa,  heç bir timestamp-i hashleyib gondermeye ehtiyac yoxdur sadece  valid username bilməklə AS‑REQ göndərib KDC‑dən AS‑REP (TGT məlumatı) ala bilər.
