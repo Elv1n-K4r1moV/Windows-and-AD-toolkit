@@ -36,9 +36,7 @@ TGT yaradılarkən lazım olan iki əsas komponent:
 
 **1.** TGT Data – içində saxlanır:
 
-Username / SID , Domain adı , Ticket validity (expiration) , Session Key (client ↔ TGS üçün)
-
-Bəzən client IP
+Username / SID , Domain adı , Ticket validity (expiration) , Session Key (client ↔ TGS üçün) ve Bəzən client IP
 
 **2.** krbtgt hesabının NT hash‑i (gizli açar) – TGT‑ni encrypt etmək üçün istifadə olunur.
 
@@ -46,13 +44,7 @@ Yəni sadə şəkildə:
 
 TGT = Encrypt(TGT Data, krbtgt NT hash)
 
-Bu o deməkdir:
-
-*Client TGT‑ni oxuya bilmir*
-
-*yalnız KDC oxuya bilir*
-
-*Client sadəcə TGT‑ni saxlayır və ötürür*
+Bu o deməkdir: *Client TGT‑ni oxuya bilmir* +  *yalnız KDC oxuya bilir* + *Client sadəcə TGT‑ni saxlayır və ötürür*
 
 Daha sonra AS-REP response hazirlanir ve **AS‑REP paketində iki ayrı şey cliente gonderilir**:
 
@@ -60,11 +52,7 @@ Daha sonra AS-REP response hazirlanir ve **AS‑REP paketində iki ayrı şey cl
 
 **EncASRepPart** daxilində:
 
-*Session Key* (client ↔ TGS üçün - client və KDC arasında sonrakı Kerberos mərhələlərində istifadəçinin TGT sahibi olduğunu sübut etmək və təhlükəsiz əlaqə qurmaq üçün yaradılan müvəqqəti gizli açardır.)
-
-*ticket lifetime məlumatları*
-
-*flags və digər Kerberos parametrləri*
+*Session Key* (client ↔ TGS üçün - client və KDC arasında sonrakı Kerberos mərhələlərində istifadəçinin TGT sahibi olduğunu sübut etmək və təhlükəsiz əlaqə qurmaq üçün yaradılan müvəqqəti gizli açardır.) *ticket lifetime məlumatları* , *flags və digər Kerberos parametrləri*
 
 ## GOLDEN TICKET ATTACK-DA
 
@@ -76,21 +64,9 @@ Golden Ticket zamanı Mimikatz istifadə edilirsə, Session Key ayrıca parametr
 
 Yəni attacker yalnız bunları verir:
 
-username
+username, domain name, domain SID, krbtgt hash
 
-domain name
-
-domain SID
-
-krbtgt hash
-
-Qalan hissələri:
-
-Session Key
-Ticket strukturu
-Encryption field-ləri
-
-Mimikatz özü hazırlayır.
+Qalan hissələri: Session Key, Ticket strukturu, Encryption field-ləri. Mimikatz özü hazırlayır.
 
 ## SKELETON KEY ATTACK
 
