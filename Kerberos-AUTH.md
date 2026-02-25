@@ -72,33 +72,11 @@ Daha sonra AS-REP response hazirlanir ve **AS‑REP paketində iki ayrı şey cl
 
 **EncASRepPart** daxilində:
 
-*Session Key* (client ↔ TGS üçün)
+*Session Key* (client ↔ TGS üçün - client və KDC arasında sonrakı Kerberos mərhələlərində istifadəçinin TGT sahibi olduğunu sübut etmək və təhlükəsiz əlaqə qurmaq üçün yaradılan müvəqqəti gizli açardır.)
 
 *ticket lifetime məlumatları*
 
 *flags və digər Kerberos parametrləri*
-
-Bes **Session Key** nedir?
-
-KDC düşünür: Mən clientə TGT verdim. Amma sabah TGS‑REQ gələndə haradan bilim bunu göndərən doğrudan həmin userdir? Çünki: TGT sadəcə bir fayldır ve networkdə tutulub kopyalana bilər.
-
-Deməli KDC‑yə lazımdır: TGT sahibi olduğunu sübut edən gizli şey. Bu gizli şey = Session Key
-
-Amma TGT icinde de session key var:
-
-Session key (UserKey ilə encrypted) → Client üçün
-
-Session key (krbtgt ilə encrypted) → TGT içində
-
-Qeyd: Session Keyler her ikisi eyni random deyerlerdir amma biri tgt icinde biri ise userin nt hashi ile hashlenir amma hashlenmeseler eslinde eyni seydirler.
-
-Amma yaradilma yollari ferqlidir:
-
-Client üçün: Session Key = Encrypt(SessionKey, UserKey)
-
-TGT içindəki :Session Key = Encrypt(SessionKey, krbtgt key)
-
-<img width="693" height="270" alt="image" src="https://github.com/user-attachments/assets/bf8b8465-8b03-43ff-bf11-c8552b766e19" />
 
 ## GOLDEN TICKET ATTACK-DA
 
