@@ -94,37 +94,8 @@ Session key (UserKey ilə encrypted) → Client üçün
 
 Session key (krbtgt ilə encrypted) → TGT içində
 
+Amma yaradilma yollari ferqlidir:
 
+Client üçün: Session Key = Encrypt(SessionKey, UserKey)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+TGT içindəki :Session Key = Encrypt(SessionKey, krbtgt key)
