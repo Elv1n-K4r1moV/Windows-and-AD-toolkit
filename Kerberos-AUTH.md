@@ -100,6 +100,7 @@ Client ucun TGT ile ayri gonderilen session key userin keyi yeniki userin nt has
 
 <img width="693" height="270" alt="image" src="https://github.com/user-attachments/assets/bf8b8465-8b03-43ff-bf11-c8552b766e19" />
 
+Qeyd: Session Keyler her ikisi eyni random deyerlerdir amma biri tgt icinde biri ise userin nt hashi ile hashlenir amma hashlenmeseler eslinde eyni seydirler.
 Client üçün: Session Key = Encrypt(SessionKey, UserKey)
 
 TGT içindəki :Session Key = Encrypt(SessionKey, krbtgt key)
