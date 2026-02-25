@@ -40,7 +40,7 @@ KDC AD-də NTDS.DIT faylında saxlanan istifadəçi *NT hash‑i (UserKey)* ilə
 
 TGT yaradılarkən lazım olan iki əsas komponent:
 
-**1** TGT Data – içində saxlanır:
+**1.** TGT Data – içində saxlanır:
 
 Username / SID
 
@@ -52,7 +52,7 @@ Session Key (client ↔ TGS üçün)
 
 Bəzən client IP
 
-**2** krbtgt hesabının NT hash‑i (gizli açar) – TGT‑ni encrypt etmək üçün istifadə olunur.
+**2.** krbtgt hesabının NT hash‑i (gizli açar) – TGT‑ni encrypt etmək üçün istifadə olunur.
 
 Yəni sadə şəkildə:
 
