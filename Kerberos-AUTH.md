@@ -54,6 +54,8 @@ Daha sonra AS-REP response hazirlanir ve **AS‑REP paketində iki ayrı şey cl
 
 *Session Key* (client ↔ TGS üçün - client və KDC arasında sonrakı Kerberos mərhələlərində istifadəçinin TGT sahibi olduğunu sübut etmək və təhlükəsiz əlaqə qurmaq üçün yaradılan müvəqqəti gizli açardır.) *ticket lifetime məlumatları* , *flags və digər Kerberos parametrləri*
 
+Session Key hem TGT data icinde olur ve bu zaman krbtgt hesabinin nt hashi ile hashlerin ama biride var tgt ile birge gelen EncASRepPart bunun icinde olur o ise artiq userin nt hashi ile sifrlenir amma deyerleri eynidir.
+
 ## GOLDEN TICKET ATTACK-DA
 
 Biz saxta TGT (Ticket Granting Ticket) yaradırıq. Bunu yaratmaq üçün ən vacib məlumat krbtgt hesabının NT hash‑idir. Əgər attacker krbtgt hash‑i əldə edərsə, artıq: TGT Data (username, domain, SID, groups və s.) tapa ve istifade edib saxta TGT hazirlaya biler. Normalda dedikki as-rep-de tgt ve EncASRepPart gonderilir ama golden ticketde kdc falan yaratmir biz ozumuz tgt yaradiriq deye TGT-nin icindeki ve TGT ile beraber gonderdiyimiz session key-i random secirik. Meselen,
@@ -96,7 +98,7 @@ AS‑REP roasting nəticəsində əldə etdiyimiz sekilde beledir:
 
 $krb5asrep$23$user@domain....
 
-Bu NT hash deyil. Bu → NT hash ilə şifrələnmiş EncASRepPart‑dır.
+Bu NT hash deyil. Bu → NT hash ilə şifrələnmiş EncASRepPart‑dır. 
 
 Hashcat necə işləyir:
 
@@ -108,10 +110,4 @@ password guess
 
 → açıldı? = password doğrudur
 
-Qısa nəticə:
-
-Hash qırılmır
-
-NT hash çıxarılmır
-
-Sadəcə password düzgünmü yoxlanılır
+Qısa nəticə: Hash qırılmır, NT hash çıxarılmır, Sadəcə password düzgünmü yoxlanılır
