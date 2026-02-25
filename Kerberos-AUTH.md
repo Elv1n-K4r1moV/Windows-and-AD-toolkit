@@ -143,3 +143,5 @@ Burda eger biz domen admin olsaq ve server terefdeki lsass-in konfiqurasiyasini 
 Normalda biz NT hash ile timestampi hashleyir as-req-de gonderirik ki, bize tgt versin ama eger kerberos Pre‑Authentication disable-dirsa,  heç bir timestamp-i hashleyib gondermeye ehtiyac yoxdur sadece  valid username bilməklə AS‑REQ göndərib KDC‑dən AS‑REP (TGT məlumatı + EncASRepPart) ala bilər.
 
 <img width="340" height="305" alt="image" src="https://github.com/user-attachments/assets/fa12823b-debe-485b-84ed-42a78f3ed234" />
+
+Yeni burada eslinde bize EncASRepPart bunun datasi lazim deyil meqsedimiz nt hashdir ne vaxt EncASRepPart bunu desifre ede bilsek bilirikki artiq nt hashi elde etdik.
