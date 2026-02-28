@@ -18,7 +18,7 @@ Həmçinin TGS Session Key bu dəfə userin NT hashi ilə şifrlənir və TGT il
 
 # 3. TGS‑REQ
 
-Clientdə artıq TGT və TGS_SESSİON_KEY var və client öz nt hashi ilə şifrlənmiş TGS_SESSİON_KEY-i deşifrə edir. Clientdə var: TGT və TGS_SESSİON_KEY dəyəri. 
+Clientdə artıq TGT və Şifrlənmiş_TGS_SESSİON_KEY var və client öz nt hashi ilə şifrlənmiş TGS_SESSİON_KEY-i deşifrə edir. Clientdə var: TGT və TGS_SESSİON_KEY dəyəri. 
 
 <img width="361" height="153" alt="image" src="https://github.com/user-attachments/assets/cf58f965-3c98-46ed-93eb-60aa0df91e56" />
 
@@ -36,13 +36,19 @@ Doğrulama tamamlandıqdan sonra TGS mənə Service Ticket hazırlayır. Service
 
 **Service Ticket** və **TGS_Session_Key ilə şifrlənmiş Service Session Key** 
 
+# 5. Application Service Request
 
+Clientdə artıq Service Ticket və TGS_Session_Key_dəyəri ilə şifrlənmiş Service Session Key. Client AS_REP-də ona verilən TGS_Session_Key-i TGS_req-də öz nt hashi ilə şifrləndiyindən deşifrə edib dəyərini çıxara bilmişdi. Buna görədə bu mərhələdə onda artıq TGS_Session_Key dəyəri zatən var. Və client bu TGS_Session_Key_dəyəri ilə şifrlənmiş Service Session Key-i asanlıqla deşifrə edir və dəyərini görə bilir.
 
+Bunu etdikdən sonra Clientdə var. Service Ticket və Service Session Key dəyəri.
 
+<img width="384" height="151" alt="image" src="https://github.com/user-attachments/assets/6790ce18-7f8e-4c43-8d5b-934469e03cbb" />
 
+Client bu dəfə username və timestamp dəyərini Service Session Key dəyəri ilə şifrləyir və Service Ticket ilə birgə Application Serverə göndərir.
 
+# 6. Application Service tərəfində yoxlama
 
-
+Application Service *Service Ticket*i öz Service Accountunun nt hashi ilə şifrləndiyindən asanlıqla deşifrə edir və onun içindəki Service Session Key dəyərini götürür. Və bu dəyər ilə timestamp/username-i deşifrə edir. Və beləcə yoxlama uğurludursa istifadəçinin servisə girişinə icazə verilir.
 
 
 
