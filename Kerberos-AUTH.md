@@ -97,5 +97,16 @@ Bu userin nt hashi ilə hashlənmiş session key-dir. Və biz bu session key-i d
 
 <img width="1050" height="385" alt="image" src="https://github.com/user-attachments/assets/b8003374-c509-4678-83ae-568710c81ae8" />
 
+İstifadəçi artıq TGT və Session Key‑ə sahibdir.  Qeyd edək ki, bu Session key user-in nt hashi ilə şifrləndiyindən userin client onu decrypt edə bilir. İndi konkret bir servise (məsələn CIFS, HTTP, MSSQL və s.) giriş etmək istəyir.
 
-İstifadəçi artıq TGT və Session Key‑ə sahibdir. İndi konkret bir servise (məsələn CIFS, HTTP, MSSQL və s.) giriş etmək istəyir.
+Client yeni timestamp yaradır və Username + Timestamp məlumatını həmin deşifrə olunmuş Session Key ilə şifrələyir. Bu hissə Authenticator adlanır. Yekun olaraq, client TGS_requestdə Ticket Granted Ticket-ə:
+
+-TGT  
+
+-Session Key ilə şifrlənmiş username və timestamp (birgə authenticator) 
+
+SPN - daxil olmaq istədiyi servisin adı.
+
+Bunları TGS_REQ kimi qarşı tərəfə göndərir.
+
+
