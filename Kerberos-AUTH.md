@@ -1,4 +1,4 @@
-# AS-REQ
+<img width="1050" height="312" alt="image" src="https://github.com/user-attachments/assets/5e4d2978-88ce-4a7d-aefe-30d7b5e93524" /># AS-REQ
 
 İstifadəçi username və password yazır. Client tərəfdəki LSASS password‑u götürür və onu NT hash‑ə çevirir. Bu NT hash artıq istifadəçinin **UserKey**‑idir.
 
@@ -49,9 +49,9 @@ Bu o deməkdir: *Client TGT‑ni oxuya bilmir* +  *yalnız KDC oxuya bilir* + *C
 
 Daha sonra AS-REP response hazirlanir ve **AS‑REP paketində iki ayrı şey cliente gonderilir**:
 
-1. **TGT**   2. **Session Key**
+1. **TGT**   2. **Session Key (TGS Session Key)**
 
-Session Key həm TGT data içində olur və bu zaman krbtgt hesabının nt hashi ilə hashlənir ama biridə var TGT ile birgə gələn. O ise artıq userin nt hashi ilə şifrlənir amma dəyərləri eynidir.
+Session Key (TGS Session Key) həm TGT data içində olur və bu zaman krbtgt hesabının nt hashi ilə hashlənir ama biridə var TGT ile birgə gələn. O ise artıq userin nt hashi ilə şifrlənir amma dəyərləri eynidir.
 
 krbtgt NT hashi ilə hashlənmiş TGT + userin nt hashi ilə hashlənmiş session key.
 
@@ -97,7 +97,7 @@ Bu userin nt hashi ilə hashlənmiş session key-dir. Və biz bu session key-i d
 
 <img width="1050" height="385" alt="image" src="https://github.com/user-attachments/assets/b8003374-c509-4678-83ae-568710c81ae8" />
 
-İstifadəçi artıq TGT və Session Key‑ə sahibdir.  Qeyd edək ki, bu Session key user-in nt hashi ilə şifrləndiyindən userin client onu decrypt edə bilir. İndi konkret bir servise (məsələn CIFS, HTTP, MSSQL və s.) giriş etmək istəyir.
+İstifadəçi artıq TGT və Session Key (TGS Session Key)‑ə sahibdir.  Qeyd edək ki, bu Session key(TGS Session Key) user-in nt hashi ilə şifrləndiyindən userin client onu decrypt edə bilir. İndi konkret bir servise (məsələn CIFS, HTTP, MSSQL və s.) giriş etmək istəyir.
 
 Client yeni timestamp yaradır və Username + Timestamp məlumatını həmin deşifrə olunmuş Session Key ilə şifrələyir. Bu hissə Authenticator adlanır. Yekun olaraq, client TGS_requestdə Ticket Granted Ticket-ə:
 
@@ -109,4 +109,40 @@ SPN - daxil olmaq istədiyi servisin adı.
 
 Bunları TGS_REQ kimi qarşı tərəfə göndərir.
 
+# TGS_REP
 
+TGS session key dəyərini bilmir çünki onu KDC yaratmışdı və mənim nt hashim ilə şifrləyib mənə göndərmişdi. Və məndə həmin session key deşifrə edib onunla tgs_req-də göndərəcəyim username və timestampi şifrləyib göndərmişəm tgs-ə. Bəs onda TGS nə edir?
+
+TGS krbtgt hashi ilə TGT-ni decrypt edir və onun içindəki session keyi götürür və timestamp/username-i deşifrə edir. Buna görə deyirik ki, AS-REP-də mənə ayrıca göndərilən session key ilə tgt içindəki session key-in dəyərləri eynidir sadəcə ayrıca göndərilən mənim nt hashim ilə TGT data içində göndərilən isə krbtgt hashi ilə şifrlənir.
+
+Yəni burada yoxlama zamanı TGS tgt-ni deşifrə edir session key dəyərini götürür və onunla username/timestampi deşifrə edir və autentikasiyanı yoxlayır. Hər şey qaydasındadırsa TGS mənə service ticket və Service Session Key yaradıb onu verir. Service Ticketi yaradılması:
+
+Service Ticket Data hazırlanır:
+
+Username / SID , Groups , Service adı (SPN) ,Ticket Validity (başlama və bitmə vaxtı) , Service Session Key (client ↔ service üçün)
+
+Və Service Ticket şifrələnir. Bu hissədə service account-un NT hash-i ilə şifrələnir. Ama Service Session Key isə artıq TGS session key ilə şifrlənir.
+
+Client bunu aça bilmir, yalnız xidmət özü NT hash ilə deşifrə edə bilir. Bunu uje kim açacaq? Application Server
+
+# Application Service Request
+
+Burada məndə TGS və Service Session key var mən username və timestampi bu Service Session Key ilə şifrləyib göndərirəm Application Serverə.
+
+# Application Service Response
+
+Burda artıq Application Server TGS-i Service Accountun nt hashi ilə deşifrə edir onun içindəki Service Session Key-i götürür və onunla timestamp/username-i deşifrə edir. Hər çey okeydirsə mənə access verir.
+
+# Silver Ticket Attack-da
+
+Əgər attacker konkret bir service account-un NT hash‑ini əldə edərsə o zaman özü saxta Service Ticket yarada bilər.
+
+Vacib fərq:
+
+Golden Ticket → TGT saxtalaşdırılır
+
+Silver Ticket → Service Ticket saxtalaşdırılır
+
+# Kerberoasting
+
+Əgər məndə valid username və onun plaintext passi və ya nt hashi varsa mən tgs_req göndərə bilərəm. Və bu zaman mənə geri qaytarılan Service Ticket və Service Session Key olacaqki 
