@@ -4,7 +4,7 @@
 
 User password yazır. LSASS passwordu NT hashə çevirir. Və buna UserKey deyilir. 
 
-*Timestamp* yaradılır və bu Timestamp User NT hash ilə şifrələnir. Və **Username** və **şifrlənmiş timestamp** *AS_req* kimi KDC-ə göndərilir.
+*Timestamp* yaradılır və bu Timestamp User NT hash ilə şifrələnir. Və **Username** və **şifrlənmiş timestamp** *AS_req* kimi KDC-ə(daha dəqiq Authentication Serverə) göndərilir.
 
 # 2. AS-REP 
 
@@ -16,3 +16,12 @@ Bu halda KDC TGT yaradır. TGT yaratmaq üçün TGT data olmalı və bu TGT data
 
 Həmçinin TGS Session Key bu dəfə userin NT hashi ilə şifrlənir və TGT ilə birgə AS_REP kimi göndərilir. Yəni **TGT** və **Userin NT hashi ilə şifrlənmiş TGS_SESSİON_KEY**
 
+# 3. TGS‑REQ
+
+Clientdə artıq TGT və TGS_SESSİON_KEY var və client öz nt hashi ilə şifrlənmiş TGS_SESSİON_KEY-i deşifrə edir. Clientdə var: TGT və TGS_SESSİON_KEY dəyəri. 
+
+<img width="361" height="153" alt="image" src="https://github.com/user-attachments/assets/cf58f965-3c98-46ed-93eb-60aa0df91e56" />
+
+Client hər hansı bir servisə daxil olmaq istəyən zaman artıq TGS_REQ göndərməlidir. Bu zaman client TGS_SESSİON_KEY dəyəri ilə username/timestapmi şifrləyir. Client TGS_REQ-də aşağıdakıları TGS-ə göndərir:
+
+**TGT** + **SPN** + **TGS_SESSION_KEY_DƏYƏRİ İLƏ ŞİFRLƏNMİŞ username/timestamp**
