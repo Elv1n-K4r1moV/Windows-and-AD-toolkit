@@ -51,9 +51,9 @@ Daha sonra AS-REP response hazirlanir ve **AS‑REP paketində iki ayrı şey cl
 
 1. **TGT**   2. **Session Key**
 
-Session Key hem TGT data icinde olur ve bu zaman krbtgt hesabinin nt hashi ile hashlerin ama biride var tgt ile birge gelen. O ise artiq userin nt hashi ile sifrlenir amma deyerleri eynidir.
+Session Key həm TGT data içində olur və bu zaman krbtgt hesabının nt hashi ilə hashlənir ama biridə var TGT ile birgə gələn. O ise artıq userin nt hashi ilə şifrlənir amma dəyərləri eynidir.
 
-krbtgt nt hashi ilə hashlənmiş TGT + userin nt hashi ilə hashlənmiş session key.
+krbtgt NT hashi ilə hashlənmiş TGT + userin nt hashi ilə hashlənmiş session key.
 
 ## GOLDEN TICKET ATTACK-DA
 
@@ -77,13 +77,13 @@ KDC istifadəçini doğrulayır:
 
 KDC Client‑dən gələn AS-REQ paketini alır. İçindəki Encrypted Timestamp‑ı UserKey ilə decrypt edir. 
 
-KDC AD-də NTDS.DIT faylında saxlanan istifadəçi *NT hash‑i (UserKey)* ilə göndərilən timestamp‑ı decrypt edir, əgər decrypt uğurlu olarsa və timestamp ilə KDC‑nin cari vaxtı arasındakı fərq icazə verilən limitdədirsə (məsələn ±5 dəqiqə), istifadəçi uğurla doğrulanır. Her sey qaydasindadirsa artiq TGT yaradilir.
+KDC AD-də NTDS.DIT faylında saxlanan istifadəçi *NT hash‑i (UserKey)* ilə göndərilən timestamp‑ı decrypt edir, əgər decrypt uğurlu olarsa və timestamp ilə KDC‑nin cari vaxtı arasındakı fərq icazə verilən limitdədirsə (məsələn ±5 dəqiqə), istifadəçi uğurla doğrulanır. Her sey qaydasindadirsa artiq TGT yaradılər.
 
-Burda eger biz domen admin olsaq ve server terefdeki lsass-in konfiqurasiyasini deyisib ora master_passworda gore de yoxla desek. O halda bizim as-req-in yoxlanmasi zamani encrypted timestamp artiq ntds.dit-deki hashle yox bizim sonradan valid kimi verdiyimiz master_password-la yoxlanilir.
+Burda əgər biz domen admin olsaq ve server tərəfdəki lsass-in konfiqurasiyasini dəyişib ora master_passworda görə də yoxla qeyd etsək. O halda bizim as-req-in yoxlanması zamanı encrypted timestamp artiq ntds.dit-deki hashlə bərabər bizim sonradan valid kimi verdiyimiz master_passwordu da əsasən yoxlanacaq. Yəni göndərilən TimeStamp (userin nt hashi ilə şifrlənmir) həm ntds.dit-dən götürülən userin real nt hashi ilə həm də master_password-a əsaslanaraq yoxlanacaq. Və təkcə master pass-a sahib olmaq bizə access verəcək.
 
 ## AS-REP ROASTING ATTACK
 
-Normalda biz NT hash ile timestampi hashleyir as-req-de gonderirik ki, bize tgt versin ama eger kerberos Pre‑Authentication disable-dirsa,  heç bir timestamp-i hashleyib gondermeye ehtiyac yoxdur sadece  valid username bilməklə AS‑REQ göndərib KDC‑dən AS‑REP (TGT məlumatı + EncASRepPart) ala bilər.
+Normalda biz NT hash ilə timestampı hashləyir as-req-de göndəririk ki, bize TGT versin ama əgər kerberos Pre‑Authentication disable-dirsa,  heç bir timestamp-i hashleyib göndərməyə ehtiyac yoxdur sadəvə  valid username bilməklə AS‑REQ göndərib KDC‑dən AS‑REP (TGT məlumatı + EncASRepPart) ala bilər.
 
 <img width="969" height="574" alt="image" src="https://github.com/user-attachments/assets/6d7814c9-3ea8-447e-9d7e-eefd3d8149db" />
 
