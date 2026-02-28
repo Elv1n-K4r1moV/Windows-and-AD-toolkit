@@ -8,7 +8,7 @@ Timestamp Yaradilmasi:
 
 *OS‑dən cari vaxtı oxuyur*  --> *UTC formatına çevirir*   --> *Kerberos formatında saxlayır*     Misal: 20260225051432Z
 
-Daha sonra bu **Timestamp** *UserKey* ( userin pass yazanda lsass-in yaratdigi nt hash ) ilə şifrələyərək **Pre‑Authentication** data hazırlayır. Client bu məlumatı AS‑REQ sorğusu kimi Domain Controller‑də yerləşən KDC serverinə göndərir.
+Daha sonra bu **Timestamp** *UserKey* ( userin pass yazanda lsass-in yaratdigi nt hash ) ilə şifrələnir. Client bu məlumatı AS‑REQ sorğusu kimi Domain Controller‑də yerləşən KDC serverinə göndərir.
 
 Timestamp-dam istifadenin meqsedi REPLAY hucumlarinin qarsisini almaqdir.
 
@@ -19,6 +19,9 @@ Amma KDC yoxlayır: timestamp ≈ current time ?
 <img width="269" height="173" alt="image" src="https://github.com/user-attachments/assets/42147d91-f949-4b2c-b3f2-273f508e00f5" />
 
 Belelikle AS-REQ sorgusu KDC-e gonderilir.
+
+<img width="1050" height="356" alt="image" src="https://github.com/user-attachments/assets/5d6057ed-94fe-4f81-9a9a-4cb5a1c9e40d" />
+
 
 # AS-REP
 
