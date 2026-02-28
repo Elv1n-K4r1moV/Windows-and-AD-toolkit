@@ -95,4 +95,7 @@ Bu userin nt hashi ilə hashlənmiş session key-dir. Və biz bu session key-i d
 
 # TGS_REQ
 
+<img width="1050" height="385" alt="image" src="https://github.com/user-attachments/assets/b8003374-c509-4678-83ae-568710c81ae8" />
+
+
 İstifadəçi artıq TGT və Session Key‑ə sahibdir. İndi konkret bir servise (məsələn CIFS, HTTP, MSSQL və s.) giriş etmək istəyir.
