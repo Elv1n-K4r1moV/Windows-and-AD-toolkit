@@ -50,6 +50,8 @@ Client bu dəfə username və timestamp dəyərini Service Session Key dəyəri 
 
 Application Service *Service Ticket*i öz Service Accountunun nt hashi ilə şifrləndiyindən asanlıqla deşifrə edir və onun içindəki Service Session Key dəyərini götürür. Və bu dəyər ilə timestamp/username-i deşifrə edir. Və beləcə yoxlama uğurludursa istifadəçinin servisə girişinə icazə verilir.
 
+Hazırladı: Elvin Kərimov 
 
+Təşəkkürlər :)
 
 
