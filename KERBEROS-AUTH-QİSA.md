@@ -25,3 +25,25 @@ Clientdə artıq TGT və TGS_SESSİON_KEY var və client öz nt hashi ilə şifr
 Client hər hansı bir servisə daxil olmaq istəyən zaman artıq TGS_REQ göndərməlidir. Bu zaman client TGS_SESSİON_KEY dəyəri ilə username/timestapmi şifrləyir. Client TGS_REQ-də aşağıdakıları TGS-ə göndərir:
 
 **TGT** + **SPN** + **TGS_SESSION_KEY_DƏYƏRİ İLƏ ŞİFRLƏNMİŞ username/timestamp**
+
+# 4. TGS-REP
+
+Ticket Granted Ticket(TGS) TGT-ni krgtgt hesabının nt hashi ilə deşifrə edir və onun içindəki TGS_SESSİON_KEY_DƏYƏRİNİ götürür. Və bu dəyər ilə timestamp/username-i deşifrə edir. Və beləcə doğrulamanı yoxlayır. 
+
+<img width="373" height="120" alt="image" src="https://github.com/user-attachments/assets/d8f94a17-0ee4-41a9-a05f-bddaa2a036c8" />
+
+Doğrulama tamamlandıqdan sonra TGS mənə Service Ticket hazırlayır. Service Ticket yaratmaq üçün Server Accountun NT hashi və Service Ticket data lazımdır və bu data içində *username*, *sid*, *service session key(random olaraq yaradılan dəyər)* olur. Bu Service Ticket Data Server Accountun NT hashi şifrlənir. Həmçinin service session key bu dəfə də TGS Session Key ilə şifrlənir və Service Ticket ilə birgə clientə göndərilir. Yəni TGS_REP-də göndərilir:
+
+**Service Ticket** və **TGS_Session_Key ilə şifrlənmiş Service Session Key** 
+
+
+
+
+
+
+
+
+
+
+
+
