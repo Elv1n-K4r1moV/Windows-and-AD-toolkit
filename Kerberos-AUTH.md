@@ -55,7 +55,7 @@ Session Key həm TGT data içində olur və bu zaman krbtgt hesabının nt hashi
 
 krbtgt NT hashi ilə hashlənmiş TGT + userin nt hashi ilə hashlənmiş session key.
 
-## GOLDEN TICKET ATTACK-DA
+# GOLDEN TICKET ATTACK-DA
 
 Biz saxta TGT (Ticket Granting Ticket) yaradırıq. Bunu yaratmaq üçün ən vacib məlumat krbtgt hesabının NT hash‑idir. Əgər attacker krbtgt hash‑i əldə edərsə, artıq: TGT Data (username, domain, SID, groups və s.) tapa ve istifade edib saxta TGT hazirlaya biler. Normalda dedikki as-rep-de tgt ve session key gonderilir ama golden ticketde kdc falan yaratmir biz ozumuz tgt yaradiriq deye TGT-nin icindeki ve TGT ile beraber gonderdiyimiz session key-i random secirik. Meselen,
 
@@ -69,7 +69,7 @@ username, domain name, domain SID, krbtgt hash
 
 Qalan hissələri: Session Key, Ticket strukturu, Encryption field-ləri. Mimikatz özü hazırlayır.
 
-## SKELETON KEY ATTACK
+# SKELETON KEY ATTACK
 
 Yadimiza salaq:
 
@@ -81,7 +81,7 @@ KDC AD-də NTDS.DIT faylında saxlanan istifadəçi *NT hash‑i (UserKey)* ilə
 
 Burda əgər biz domen admin olsaq ve server tərəfdəki lsass-in konfiqurasiyasini dəyişib ora master_passworda görə də yoxla qeyd etsək. O halda bizim as-req-in yoxlanması zamanı encrypted timestamp artiq ntds.dit-deki hashlə bərabər bizim sonradan valid kimi verdiyimiz master_passwordu da əsasən yoxlanacaq. Yəni göndərilən TimeStamp (userin nt hashi ilə şifrlənmir) həm ntds.dit-dən götürülən userin real nt hashi ilə həm də master_password-a əsaslanaraq yoxlanacaq. Və təkcə master pass-a sahib olmaq bizə access verəcək.
 
-## AS-REP ROASTING ATTACK
+# AS-REP ROASTING ATTACK
 
 Normalda biz NT hash ilə timestampı hashləyir as-req-de göndəririk ki, bize TGT versin ama əgər kerberos Pre‑Authentication disable-dirsa,  heç bir timestamp-i hashleyib göndərməyə ehtiyac yoxdur sadəvə  valid username bilməklə AS‑REQ göndərib KDC‑dən AS‑REP (TGT məlumatı + EncASRepPart) ala bilər.
 
