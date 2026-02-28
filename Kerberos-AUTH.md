@@ -95,14 +95,4 @@ Bu userin nt hashi ilə hashlənmiş session key-dir. Və biz bu session key-i d
 
 # TGS_REQ
 
-TGS_REQ
-
-İlk növbədə client yeni bir timestamp yaradır. Bu timestamp göstərir ki, sorğu yeni və təzədir, köhnə paketləri təkrar istifadə etməyə imkan vermir.
-
-Daha sonra client bu timestamp-i AS-REP-də gələn Client ↔ TGS session key ilə şifrələyir (EncASRepPart içində olan session key-dən çıxarılır). Bu şifrələnmiş məlumat artıq Authenticator adlanır.
-
-Client TGS-ə sorğu göndərərkən iki əsas komponenti birlikdə ötür:
-
-TGT – KDC tərəfindən əvvəl verilmiş, client tərəfindən oxuna bilməyən ticket
-
-Authenticator – içində timestamp və username var, session key ilə şifrələnmişdir
+İstifadəçi artıq TGT və Session Key‑ə sahibdir. İndi konkret bir servise (məsələn CIFS, HTTP, MSSQL və s.) giriş etmək istəyir.
